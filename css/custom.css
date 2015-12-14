@@ -115,3 +115,7 @@ body {
     border-right: -2px solid #ccc;   
    
 }
+
+iframe{
+   border: 0px;
+}
