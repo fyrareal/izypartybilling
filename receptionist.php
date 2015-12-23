@@ -1,34 +1,32 @@
 <?php
     session_start();
+    
+//    SETTING DEFAULT VALUE FOR CUSTOMER
+    if(!isset($_SESSION['custName1_receptionist'])){
+        
+        $_SESSION['customerName1_receptionist']="";
+    }
+    if(!isset($_SESSION['custName2_receptionist'])){
+        
+        $_SESSION['customerName2_receptionist']="";
+    }
 
+
+//    SETTING DEFAUL VALUE FOR STATUS
+    if(!isset($_SESSION['status_room1'])){$_SESSION['status_room1']='Kosong';}
 
     mysql_connect('localhost', 'root', '');
     mysql_select_db('izyparty');        
 
     //Status Ruangan Karaoke
-    $_SESSION['status_room1']='Kosong';$_SESSION['status2']='Kosong';$status3='Kosong';$status4='Kosong';$status5='Kosong';
+//    $_SESSION['status_room1']='Kosong';$_SESSION['status2']='Kosong';
+    $status3='Kosong';$status4='Kosong';$status5='Kosong';
     $status6='Kosong';$status7='Kosong';$status8='Kosong';$status9='Kosong';$status10='Kosong';
     $status11='Kosong';$status12='Kosong';$status13='Kosong';$status14='Kosong';$status15='Kosong';
     $status16='Kosong';$status17='Kosong';$status18='Kosong';$status19='Kosong';$status20='Kosong';
     
-    //Default field di edit text
-//    $_SESSION['custName1'] ='Nama Pengunjung';$custName2 ='Nama Pengunjung';$custName3 ='Nama Pengunjung';$custName4 ='Nama Pengunjung';$custName5 ='Nama Pengunjung';
-//    $custName6 ='Nama Pengunjung';$custName7 ='Nama Pengunjung';$custName8 ='Nama Pengunjung';$custName9 ='Nama Pengunjung';$custName10 ='Nama Pengunjung'; 
-    
-
-    //Fixing refresh page
-//    if($_SESSION)
-//    {
-//        $_SESSION['customerName1_receptionist']='';
-//        $_SESSION['customerName2_receptionist']='';
-//    }
 
 
-
-
-
-$custName1 = $_SESSION['customerName1_receptionist'];
-$custName2 = $_SESSION['customerName2_receptionist'];
     
     
 
@@ -51,9 +49,14 @@ $custName2 = $_SESSION['customerName2_receptionist'];
             mysql_select_db('izyparty'); 
             mysql_query("INSERT INTO roomorder (customer_name,room_id,start) VALUES ('$custName1','$roomID','$date')"); 
             $_SESSION['status_room1']='Isi';
+            
+            //COBA GANTI WARNA
+//            echo "<script> gantiWarna(); </script>";
         }else if ($_SESSION['status_room1']='Isi')
         {
-            $_SESSION['status_room1']='Kosong';
+            
+//           echo "<script> gantiWarna(); </script>";
+//           $_SESSION['status_room1']='Kosong';
         }
         
     }
@@ -189,7 +192,7 @@ $custName2 = $_SESSION['customerName2_receptionist'];
             
             
             <!-- Modal 1 -->
-            <form method="post" action="#">  
+            <form method="post" action="receptionist.php">  
             <div class="modal fade" id="myModal1" >
                 <div class="modal-dialog">
                     <!-- Modal content-->
@@ -199,7 +202,7 @@ $custName2 = $_SESSION['customerName2_receptionist'];
                             <h4 class="modal-title">Room 1</h4>
                         </div>
                         <div class="modal-body inputmodaltengah">
-                            <input class="inputgaris" type="text" name="customerName1_receptionist" placeholder="<?php echo $custName1 ?>" />
+                            <input class="inputgaris" type="text" name="customerName1_receptionist" placeholder="<?php echo $_SESSION['customerName1_receptionist'] ?>" />
                         </div>
 
                         <div class="modal-footer">

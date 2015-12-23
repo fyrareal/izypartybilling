@@ -2,16 +2,17 @@
     
     session_start();
     $custName = $_SESSION['customerName1_receptionist'];
-    
+    //$status1 = $_SESSION['status_room1'];
     //HANDLE BILLING
     
     if(isset($_POST['modal1_checkout']))
     {
         $custName = $_SESSION['customerName1_receptionist'];
+        $_SESSION['status_room1']="Kosong";
+        
         date_default_timezone_set('Asia/Bangkok');
         $date = date('m/d/y H:i:s a',time());   
-        mysql_connect('localhost', 'root', '');
-        // pilih database
+        mysql_connect('localhost', 'root', '');        
         mysql_select_db('izyparty');        
     //  mysql_query("INSERT INTO roomorder (end) VALUES ('$date') WHERE customer_name='$custName'");  
     //  mysql_query("INSERT INTO roomorder (end) VALUES ('$date')"); ini yang bisa
@@ -82,7 +83,7 @@
                         <h3 style="text-align:center">1</h3>
                     </div>
                     <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal1" style="font-size: 20px">
-                        Kosong &nbsp; <i class="fa fa-arrow-circle-right"></i>
+                        <?php echo $_SESSION['status_room1'];?> <i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
@@ -105,7 +106,7 @@
                         <div class="modal-footer">
                               
 <!--                            <input type="submit"  class="btn btn-primary" value="Ok" name="modal1"/>-->
-                            <input type="submit" class="btn btn-danger" value="CheckOut" name="modal1_checkout" />
+                            <input type="submit" class="btn btn-danger" value="CheckOut" name="modal1_checkout" id="modal1_checkout_id"/>
                             
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>

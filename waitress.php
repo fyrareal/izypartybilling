@@ -1,6 +1,8 @@
 <?php
-    
+    $testJS = "testJS";
     session_start();
+    
+    
 
     if(isset($_POST['myInputs[]']))
     {
@@ -101,9 +103,10 @@
 	var counter = 1;
      var limit = 3;
      function addInput(divName){
-     
+        
           var newdiv = document.createElement('div');
-          newdiv.innerHTML = " <br><input type='text' name='myInputs[]'>";
+         // newdiv.innerHTML = " <br><input type='text' name='myInputs[]'>";
+          newdiv.innerHTML = "<?PHP echo $testJS;?>";
           document.getElementById(divName).appendChild(newdiv);
           counter++;
      
@@ -214,11 +217,9 @@
                                         </br>
                                         <select name="ladies">
                                                 <?php
-                                                // koneksi ke database
+                                                
                                                 mysql_connect('localhost', 'root', '');
-                                                // pilih database
                                                 mysql_select_db('izyparty');
-                                                // melakukan query 
                                                 $result = mysql_query("SELECT * FROM ladies");
 
                                                 while($data = mysql_fetch_array($result)) {
@@ -242,20 +243,16 @@
                                         </br>
                                         <select name="buku" id="daftarItem">
                                                 <?php
-                                                // koneksi ke database
-                                                mysql_connect('localhost', 'root', '');
-                                                // pilih database
-                                                mysql_select_db('izyparty');
-                                                // melakukan query 
+                                               
+                                                mysql_connect('localhost', 'root', '');                                               
+                                                mysql_select_db('izyparty');                                               
                                                 $result = mysql_query("SELECT * FROM item");
 
                                                 while($data = mysql_fetch_array($result)) {
-
                                                     echo "<option value='$data[item_id]'>$data[item_name]</option>";
                                                 }
                                                 ?>
                                         </select>  
-                              
 
                                  <div id="dynamicInput">
                                       Entry 1<br><input type="text" name="myInputs[]">
