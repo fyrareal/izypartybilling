@@ -14,6 +14,7 @@
 
 //    SETTING DEFAUL VALUE FOR STATUS
     if(!isset($_SESSION['status_room1'])){$_SESSION['status_room1']='Kosong';}
+    if(!isset($_SESSION['status_room2'])){$_SESSION['status_room2']='Kosong';}
 
     mysql_connect('localhost', 'root', '');
     mysql_select_db('izyparty');        
@@ -224,7 +225,7 @@
                         <h3 style="text-align:center">2</h3>
                     </div>
                     <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal2" style="font-size: 20px">
-                        <?php echo $_SESSION['status2'];?> <i class="fa fa-arrow-circle-right"></i>
+                        <?php echo $_SESSION['status_room2'];?> <i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
@@ -240,7 +241,7 @@
                             <h4 class="modal-title">Room 2</h4>
                         </div>
                         <div class="modal-body inputmodaltengah">
-                            <input class="inputgaris" type="text" name="customerName2_receptionist" placeholder="<?php echo $custName2 ?>" />
+                            <input class="inputgaris" type="text" name="customerName2_receptionist" placeholder="<?php echo $_SESSION['customerName2_receptionist']; ?>" />
                         </div>
 
                         <div class="modal-footer">
@@ -263,6 +264,8 @@
                     </div>
                     <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal3" style="font-size: 20px" >
                         Kosong &nbsp; <i class="fa fa-arrow-circle-right"></i>
+                       
+
                     </a>
                 </div>
             </div>
@@ -278,7 +281,7 @@
                             <h4 class="modal-title">Room 3</h4>
                         </div>
                         <div class="modal-body inputmodaltengah">
-                            <input class="inputgaris" type="text" name="customerName3_receptionist" placeholder="<?php echo $custName3 ?>" />
+                            <input class="inputgaris" type="text" name="customerName3_receptionist" placeholder="<?php echo $_SESSION['customerName2_receptionist']; ?>" />
                         </div>
 
                         <div class="modal-footer">

@@ -1,12 +1,19 @@
 <?php
     $testJS = "testJS";
-    session_start();
+    session_start();    
     
-    
+    if (isset($_REQUEST['delete'])) {
+        mysql_connect('localhost', 'root', '');        
+        mysql_select_db('izyparty');
+        mysql_query("DELETE FROM order_dummy WHERE customer_name='Fadhol'");
+    }
 
-    if(isset($_POST['myInputs[]']))
+    if(isset($_POST['Delete']))
     {
-        
+        mysql_connect('localhost', 'root', '');        
+        mysql_select_db('izyparty');
+        mysql_query("DELETE FROM order_dummy WHERE customer_name='Fadhol'");
+//        ------------------
     }
 
     if(isset($_POST['modal22']))
@@ -103,14 +110,22 @@
 	var counter = 1;
      var limit = 3;
      function addInput(divName){
-        
-          var newdiv = document.createElement('div');
+         var s = document.getElementsByName('buku')[0];
+         var texts = s.options[s.selectedIndex].text;
+         var qty = document.getElementById("qtyroom2").value;
+         var newdiv = document.createElement('div');
+         newdiv.className = "parent";
          // newdiv.innerHTML = " <br><input type='text' name='myInputs[]'>";
-          newdiv.innerHTML = "<?PHP echo $testJS;?>";
+
+//          newdiv.innerHTML = texts+qty+"<a class='btn' onClick='removeElement('dynamicInput','div');'>x</a>";
+            newdiv.innerHTML = "<div id='child'>"+texts+qty+"<a class='btn' onClick='removeElement('parent','child');'>x</a></div>";
+//          newdiv.innetHTML = "<a class='btn' onClick='removeElement('dynamicInput','div');'>x</a>"
+          
           document.getElementById(divName).appendChild(newdiv);
           counter++;
-     
-}
+     }
+    
+   
 	
 </script>
     
@@ -208,7 +223,7 @@
                         <!--                        isi modal-->
                         <div class="modal-body">
                             <h4>Nama Pengunjung :
-                               <?php echo $custName; ?>                                
+                               <?php echo $_SESSION['customerName2_receptionist']; ?>                                
                             </h4>
                             
                             <div class="row">
@@ -225,6 +240,7 @@
                                                 while($data = mysql_fetch_array($result)) {
 
                                                     echo "<option value='$data[ladies_id]'>$data[ladies_name]</option>";
+//                                                    echo "<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a>"; 
                                                 }
                                                 ?>
                                         </select>  
@@ -235,7 +251,7 @@
                                 <div class="col-md-6">
                                     <div></div>
                                     <div class="form-group">
-<!--                                        <form method="post" action="">-->
+                                        <form method="post" action="">
                                                
                                         
                                         </br>
@@ -256,10 +272,30 @@
 
                                  <div id="dynamicInput">
                                       Entry 1<br><input type="text" name="myInputs[]">
+                                     
                                  </div>
                                  <input type="button" value="Add another text input" onClick="addInput('dynamicInput');">
-                                               
-<!--                                            </form>-->
+                                 <table>
+                                    <?php
+                                   include 'database.php';
+                                   $pdo = Database::connect();
+                                   $testCustName2 = $_SESSION['customerName2_receptionist'] ;
+//                                   $sql = "SELECT * FROM item join order_dummy on item.item_id=order_dummy.item_id join roomorder on roomorder.customer_name=order_dummy.customer_name where order_dummy.customer_name='$testCustName2'";
+                                      $sql = "SELECT * FROM item join order_dummy on item.item_id=order_dummy.item_id where order_dummy.customer_name='Fadhol'";
+                                  
+                                        
+                                   foreach ($pdo->query($sql) as $row) {
+                                            echo '<tr>';                                                                                
+                                            echo '<td>'. $row['item_name'] . '</td>';
+                                            $_SESSION['itemroom2']=$row['item_name'];
+                                            echo '<td><input type="button" class="btn-danger" value="Delete" name="Delete"></td>';
+                                            echo '<a href="waitress.php?delete">Delete</a>';
+                                            echo '</tr>';
+                                   }
+                                   Database::disconnect();
+                        ?>
+                                     </table>
+                                            </form>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -268,7 +304,7 @@
                                          </br>
                                         <label for="sel1">Jumlah :</label> 
                                     </br>
-                                        <input type="text" id="usr" name="qty_room2">
+                                        <input type="text" id="qtyroom2" name="qty_room2">
                                     </div>
                                 </div>
                                
