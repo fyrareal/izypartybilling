@@ -46,15 +46,7 @@
             
             <div class="row center-align">
                 <div>
-                <a class="btn waves-effect waves-light" 
-                href="<?php 
-                        mysql_connect('localhost', 'root', '');
-                        mysql_select_db('izyparty');
-                        $result = mysql_query("SELECT * FROM user WHERE customer_name='$custName'");
-                    $data = mysql_fetch_array($result);
-                                                              echo 
-                                                                    $test;
-                                                              ?>">Log In</a>
+                <a class="btn waves-effect waves-light" href="/izypartybilling/receptionist.php">Log In</a>
                 </div>
             </div>
         </form>

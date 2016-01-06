@@ -57,7 +57,7 @@
             <div class="col-md-1">
                 <div class="dropdown">
                     <button data-toggle="dropdown" href="#" type="button" class="btn btn-danger btn-circle btn-lg">
-                        <i class="glyphicon glyphicon-heart"></i>
+                        <i class="glyphicon glyphicon-user"></i>
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                         <p class="hdivider">Ardhanu Bismo</p>
@@ -100,7 +100,7 @@
                             <h4 class="modal-title">Room 1</h4>
                         </div>
                         <div class="modal-body inputmodaltengah">
-                            <input class="inputgaris" type="text" name="customerName1_waitress" placeholder="<?php if($_SESSION['status_room1']=='isi'){echo $custName;}?>" />
+                            <input class="inputgaris" type="text" name="customerName1_waitress" placeholder="<?php echo $_SESSION['customerName1_receptionist']; ?>" />
                         </div>
 
                         <div class="modal-footer">

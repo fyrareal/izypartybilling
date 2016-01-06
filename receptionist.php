@@ -14,7 +14,8 @@
 
 //    SETTING DEFAUL VALUE FOR STATUS
     if(!isset($_SESSION['status_room1'])){$_SESSION['status_room1']='Kosong';}
-    if(!isset($_SESSION['status_room2'])){$_SESSION['status_room2']='Kosong';}
+    if(!isset($_SESSION['status_room2'])){$_SESSION['status_room2']='Isi';}
+    $_SESSION['status_room2']='Isi';
 
     mysql_connect('localhost', 'root', '');
     mysql_select_db('izyparty');        
@@ -36,7 +37,7 @@
     }   
     
     
-    if(isset($_POST['modal1_receptionist']))
+       if(isset($_POST['modal1_receptionist']))
     {
         if($_SESSION['status_room1']=='Kosong')
         {
@@ -52,12 +53,12 @@
             $_SESSION['status_room1']='Isi';
             
             //COBA GANTI WARNA
-//            echo "<script> gantiWarna(); </script>";
+// echo "<script> gantiWarna(); </script>";
         }else if ($_SESSION['status_room1']='Isi')
         {
             
 //           echo "<script> gantiWarna(); </script>";
-//           $_SESSION['status_room1']='Kosong';
+           $_SESSION['status_room1']='Kosong';
         }
         
     }
@@ -147,6 +148,10 @@
             document.getElementById("gantiText").innerHTML = "Isi";
             document.getElementById("testGantiWarna").className = "small-box bg-yellow";
         }
+        function gantiWarna()
+        {
+            document.getElementById("testGantiWarna1").className = "small-box bg-yellow";
+        }
     </script>
     
     <div class="container">
@@ -181,7 +186,7 @@
             <!--no1-->
             <div class="col-md-2 col-xs-6">
                 <!-- small box -->
-                <div class="small-box bg-light-blue">
+                <div class="small-box bg-light-blue" id="tesGantiWarna1">
                     <div class="inner">
                         <h3 style="text-align:center">1</h3>
                     </div>
@@ -208,7 +213,7 @@
 
                         <div class="modal-footer">
                             
-                            <input type="submit"  class="btn btn-primary" value="Ok" name="modal1_receptionist"/>
+                            <input type="submit"  class="btn btn-primary" value="Ok" name="modal1_receptionist" onClick="gantiWarna()"/>
                             
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
@@ -220,7 +225,7 @@
             <!--no2-->
             <div class="col-md-2 col-xs-6">
                 <!-- small box -->
-                <div class="small-box bg-light-blue">
+                <div class="small-box bg-yellow">
                     <div class="inner">
                         <h3 style="text-align:center">2</h3>
                     </div>

@@ -13,17 +13,14 @@
         mysql_connect('localhost', 'root', '');        
         mysql_select_db('izyparty');
         mysql_query("DELETE FROM order_dummy WHERE customer_name='Fadhol'");
-//        ------------------
+
     }
 
     if(isset($_POST['modal22']))
     {
-        $name = $_POST['myInputs'];
-        $_SESSION['order']=$name;
-        foreach( $name as $key => $n ) {
-          print "Order : ".$n;
-          ?></br><?php
-        }
+        //$name = $_POST['myInputs'];
+        //$_SESSION['order']=$name;
+
         
         mysql_connect('localhost', 'root', '');        
         mysql_select_db('izyparty');
@@ -114,18 +111,28 @@
          var texts = s.options[s.selectedIndex].text;
          var qty = document.getElementById("qtyroom2").value;
          var newdiv = document.createElement('div');
-         newdiv.className = "parent";
+//         newdiv.className = "parent";
+         newdiv.id ="parent";
          // newdiv.innerHTML = " <br><input type='text' name='myInputs[]'>";
 
 //          newdiv.innerHTML = texts+qty+"<a class='btn' onClick='removeElement('dynamicInput','div');'>x</a>";
-            newdiv.innerHTML = "<div id='child'>"+texts+qty+"<a class='btn' onClick='removeElement('parent','child');'>x</a></div>";
+//            newdiv.innerHTML = "<div id='child'>"+texts+qty+"<a class='btn' onClick='removeElement('parent','child');'>x</a></div>";
+            newdiv.innerHTML = "<div id='child'>"+texts+"<a>     Jumlah :  </a>    "+qty+"<a class='btn' onClick='removeElement();'>x</a></div>";
 //          newdiv.innetHTML = "<a class='btn' onClick='removeElement('dynamicInput','div');'>x</a>"
           
           document.getElementById(divName).appendChild(newdiv);
           counter++;
      }
     
-   
+    function removeElement(){
+         
+
+        var div = document.getElementById("child");
+        div.parentNode.removeChild(div);
+
+        
+
+    }
 	
 </script>
     
@@ -140,7 +147,7 @@
             <div class="col-md-1">
                 <div class="dropdown">
                     <button data-toggle="dropdown" href="#" type="button" class="btn btn-danger btn-circle btn-lg">
-                        <i class="glyphicon glyphicon-heart"></i>
+                        <i class="glyphicon glyphicon-user"></i>
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                         <p class="hdivider">Ardhanu Bismo</p>
@@ -166,7 +173,7 @@
                         <h3 style="text-align:center">1</h3>
                     </div>
                     <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal1" style="font-size: 20px">
-                        Kosong &nbsp; <i class="fa fa-arrow-circle-right"></i>
+                        <?php echo $_SESSION['status_room1'];?> <i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>
             </div>
@@ -223,7 +230,7 @@
                         <!--                        isi modal-->
                         <div class="modal-body">
                             <h4>Nama Pengunjung :
-                               <?php echo $_SESSION['customerName2_receptionist']; ?>                                
+                               <?php echo $_SESSION['customerName1_receptionist']; ?>                                
                             </h4>
                             
                             <div class="row">
@@ -271,10 +278,11 @@
                                         </select>  
 
                                  <div id="dynamicInput">
-                                      Entry 1<br><input type="text" name="myInputs[]">
+<!--                                      Entry 1<br><input type="text" name="myInputs[]">-->
                                      
                                  </div>
-                                 <input type="button" value="Add another text input" onClick="addInput('dynamicInput');">
+                                    
+                                 <input type="button" value="Tambah" onClick="addInput('dynamicInput');">
                                  <table>
                                     <?php
                                    include 'database.php';
