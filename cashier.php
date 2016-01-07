@@ -60,8 +60,8 @@
                         <i class="glyphicon glyphicon-user"></i>
                     </button>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                        <p class="hdivider">Ardhanu Bismo</p>
-                        <a href="index.html">Log Out</a>
+                        <p class="hdivider"><?php echo $_SESSION['cashier'];?></p>
+                        <a href="index.php">Log Out</a>
                     </ul>
                 </div>
             </div>
