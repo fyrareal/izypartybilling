@@ -13,7 +13,6 @@
         mysql_connect('localhost', 'root', '');        
         mysql_select_db('izyparty');
         mysql_query("DELETE FROM order_dummy WHERE customer_name='Fadhol'");
-
     }
 
     if(isset($_POST['modal22']))
@@ -120,6 +119,7 @@
             newdiv.innerHTML = "<div id='child'>"+texts+"<a>     Jumlah :  </a>    "+qty+"<a class='btn' onClick='removeElement();'>x</a></div>";
 //          newdiv.innetHTML = "<a class='btn' onClick='removeElement('dynamicInput','div');'>x</a>"
           
+           
           document.getElementById(divName).appendChild(newdiv);
           counter++;
      }
@@ -283,6 +283,7 @@
                                  </div>
                                     
                                  <input type="button" value="Tambah" onClick="addInput('dynamicInput');">
+                                    
                                  <table>
                                     <?php
                                    include 'database.php';
@@ -341,7 +342,6 @@
                     </a>
                 </div>
             </div>
-
             <!-- modal3 -->
            <form method="post" action="waitress.php" name="modal2_waitress">  
             <div class="modal fade" id="myModal3" role="dialog">
