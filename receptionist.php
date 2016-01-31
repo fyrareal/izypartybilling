@@ -1,6 +1,8 @@
 <?php
     session_start();
     
+if(!isset($_SESSION['receptionist']))
+    $_SESSION['receptionist']="Receptionist";
 //    SETTING DEFAULT VALUE FOR CUSTOMER
     if(!isset($_SESSION['custName1_receptionist'])){
         
@@ -54,7 +56,7 @@
             
             //COBA GANTI WARNA
 // echo "<script> gantiWarna(); </script>";
-        }else if ($_SESSION['status_room1']='Isi')
+        }else if ($_SESSION['status_room1']==  'Isi')
         {
             
 //           echo "<script> gantiWarna(); </script>";
@@ -131,6 +133,7 @@
         <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" type="text/css" href="css/ganti.css" />
         <link rel="stylesheet" type="text/css" href="css/custom.css" />
+        
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -140,7 +143,7 @@
         <link rel="shortcut icon" href="assets/logo.ico">
     </head>
 
-    <body>
+    <body id="header">
 
         <script type='text/javascript'>
             function gantiText() {
@@ -152,9 +155,48 @@
                 document.getElementById("testGantiWarna1").className = "small-box bg-yellow";
             }
         </script>
-<section id="header">
-        </section>
-        <div class="container">
+
+        
+        
+<nav class="navbar navbar-fixed-top custom-navbar">
+<!--  <div class="container-fluid">-->
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header" style="width:25%;">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"> <img class="logo" src="assets/logo.png"></a>
+    </div>
+
+  
+   
+      <ul class="nav navbar-nav" style="width:45%;text-align:center;">        
+       <h1><strong>RECEPTIONIST</strong></h1>
+      </ul>
+     
+      <ul class="nav navbar-nav navbar-right" style="width:10%;margin-top:10px;">
+
+          <div class="dropdown">
+                        <button data-toggle="dropdown" href="#" type="button" class="btn btn-warning btn-circle btn-lg">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                            <p class="hdivider">
+                                <?php echo $_SESSION['receptionist'];?>
+                            </p>
+                            <a href="index.php">Log Out</a>
+                        </ul>
+                    </div>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+
+</nav>
+
+<!--        <div class="container">-->
+<!--
             <div class="row">
                 <div class="col-md-4">
                     <img class="logo" src="assets/logo.png">
@@ -176,6 +218,7 @@
                     </div>
                 </div>
             </div>
+-->
             <br/>
             <br/>
             <br/>
@@ -184,19 +227,23 @@
             <div class="row">
                 <!--spasi-->
 
-                <div class="col-md-2 navigation">
-                    <a href="#section1">
-                        <button class="btn btn-warning page-scroll" type="button" href="#section1" style="margin-bottom:10px;">01-15</button>
+                <div class="col-sm-2 col-md-2 navigation" style="position:fixed;">
+                    <a class="page-scroll" href="#header">
+                        <button class="btn btn-warning" type="button"><span>01-15</span></button>         
                     </a>
                     
-                    <a href="#section2">
-                        <button class="btn btn-warning page-scroll" type="button" href="#section2">16-30</button>
+                    <a class="page-scroll" href="#section2">
+                        <button class="btn btn-warning" type="button"><span>16-30</span></button>
                     </a>
+                    <a class="page-scroll" href="#section3">
+                        <button class="btn btn-warning" type="button"><span>31-45</span></button>
+                    </a>
+
 
                 </div>
               
-                <div class="col-md-10">
-                    <section id="section1" style="width:100%;height:500px;">
+                <div class="col-sm-10 col-md-10 content">
+                    <section id="section1" style="height:500px;">
                     <div class="row">
 
                         <!--no1-->
@@ -397,7 +444,7 @@
                                     <h3 style="text-align:center">6</h3>
                                 </div>
                                 <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal1" style="font-size: 20px">
-                                    <?php echo $_SESSION['status_room1']; ?> <i class="fa fa-arrow-circle-right"></i>
+                                    Kosong <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -431,12 +478,12 @@
                         <!--no2-->
                         <div class="col-md-2 col-xs-6">
                             <!-- small box -->
-                            <div class="small-box bg-yellow">
+                            <div class="small-box bg-light-blue">
                                 <div class="inner">
                                     <h3 style="text-align:center">7</h3>
                                 </div>
                                 <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal2" style="font-size: 20px">
-                                    <?php echo $_SESSION['status_room2'];?> <i class="fa fa-arrow-circle-right"></i>
+                                    Kosong<i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -587,7 +634,7 @@
                                     <h3 style="text-align:center">11</h3>
                                 </div>
                                 <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal1" style="font-size: 20px">
-                                    <?php echo $_SESSION['status_room1']; ?> <i class="fa fa-arrow-circle-right"></i>
+                                    Kosong <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -621,12 +668,12 @@
                         <!--no2-->
                         <div class="col-md-2 col-xs-6">
                             <!-- small box -->
-                            <div class="small-box bg-yellow">
+                            <div class="small-box bg-light-blue">
                                 <div class="inner">
                                     <h3 style="text-align:center">12</h3>
                                 </div>
                                 <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal2" style="font-size: 20px">
-                                    <?php echo $_SESSION['status_room2'];?> <i class="fa fa-arrow-circle-right"></i>
+                                   Kosong <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -768,7 +815,7 @@
                     </div> <!--tutup row-->
                     </section>
                     
-                    <section id="section2" style="width:100%;height:500px;">
+                    <section id="section2" style="height:500px;">
                     <div class="row">
 
                         <!--no1-->
@@ -779,7 +826,7 @@
                                     <h3 style="text-align:center">16</h3>
                                 </div>
                                 <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal1" style="font-size: 20px">
-                                    <?php echo $_SESSION['status_room1']; ?> <i class="fa fa-arrow-circle-right"></i>
+                                    Kosong <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -969,7 +1016,7 @@
                                     <h3 style="text-align:center">21</h3>
                                 </div>
                                 <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal1" style="font-size: 20px">
-                                    <?php echo $_SESSION['status_room1']; ?> <i class="fa fa-arrow-circle-right"></i>
+                                    Kosong <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -1003,12 +1050,12 @@
                         <!--no2-->
                         <div class="col-md-2 col-xs-6">
                             <!-- small box -->
-                            <div class="small-box bg-yellow">
+                            <div class="small-box bg-light-blue">
                                 <div class="inner">
                                     <h3 style="text-align:center">22</h3>
                                 </div>
                                 <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal2" style="font-size: 20px">
-                                    <?php echo $_SESSION['status_room2'];?> <i class="fa fa-arrow-circle-right"></i>
+                                   Kosong<i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -1159,7 +1206,7 @@
                                     <h3 style="text-align:center">26</h3>
                                 </div>
                                 <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal1" style="font-size: 20px">
-                                    <?php echo $_SESSION['status_room1']; ?> <i class="fa fa-arrow-circle-right"></i>
+                                    Kosong <i class="fa fa-arrow-circle-right"></i>
                                 </a>
                             </div>
                         </div>
@@ -1341,6 +1388,577 @@
                        
                     </section>
 
+                    <section id="section3" style="height:500px;">
+                    <div class="row">
+
+                        <!--no1-->
+                        <div class="col-md-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-light-blue" id="tesGantiWarna1">
+                                <div class="inner">
+                                    <h3 style="text-align:center">31</h3>
+                                </div>
+                                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal1" style="font-size: 20px">
+                                    <?php echo $_SESSION['status_room1']; ?> <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <!-- Modal 1 -->
+                        <form method="post" action="receptionist.php">
+                            <div class="modal fade" id="myModal1">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Room 31</h4>
+                                        </div>
+                                        <div class="modal-body inputmodaltengah">
+                                            <input class="inputgaris" type="text" name="customerName1_receptionist" placeholder="<?php echo $_SESSION['customerName1_receptionist'] ?>" />
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <input type="submit" class="btn btn-primary" value="Ok" name="modal1_receptionist" onClick="gantiWarna()" />
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!--no2-->
+                        <div class="col-md-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3 style="text-align:center">32</h3>
+                                </div>
+                                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal2" style="font-size: 20px">
+                                    <?php echo $_SESSION['status_room2'];?> <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Modal2 -->
+                        <form method="post" action="receptionist.php">
+                            <div class="modal fade" id="myModal2">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Room 32</h4>
+                                        </div>
+                                        <div class="modal-body inputmodaltengah">
+                                            <input class="inputgaris" type="text" name="customerName2_receptionist" placeholder="<?php echo $_SESSION['customerName2_receptionist']; ?>" />
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <input type="submit" class="btn btn-primary" value="Ok" name="modal2_receptionist" />
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!--no3-->
+                        <div class="col-md-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-light-blue">
+                                <div class="inner">
+                                    <h3 style="text-align:center">33</h3>
+                                </div>
+                                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal3" style="font-size: 20px">
+                        Kosong &nbsp; <i class="fa fa-arrow-circle-right"></i>
+                       
+
+                    </a>
+                            </div>
+                        </div>
+
+                        <!-- modal3 -->
+                        <form method="post" action="receptionist.php">
+                            <div class="modal fade" id="myModal3">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Room 33</h4>
+                                        </div>
+                                        <div class="modal-body inputmodaltengah">
+                                            <input class="inputgaris" type="text" name="customerName3_receptionist" placeholder="<?php echo $_SESSION['customerName2_receptionist']; ?>" />
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <input type="submit" class="btn btn-primary" value="Ok" name="modal3_receptionist" />
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!--no4-->
+                        <div class="col-md-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-light-blue">
+                                <div class="inner">
+                                    <h3 style="text-align:center">34</h3>
+                                </div>
+                                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal4" style="font-size: 20px">
+                         Kosong &nbsp; <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                            </div>
+                        </div>
+                        <!-- Modal 4 -->
+                        <form method="post" action="receptionist.php">
+                            <div class="modal fade" id="myModal4">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Room 34</h4>
+                                        </div>
+                                        <div class="modal-body inputmodaltengah">
+                                            <input class="inputgaris" type="text" name="customerName3_receptionist" placeholder="<?php echo $custName4 ?>" />
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <input type="submit" class="btn btn-primary" value="Ok" name="modal4_receptionist" />
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!--no5-->
+                        <div class="col-md-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-light-blue" id="testGantiWarna">
+                                <div class="inner">
+                                    <h3 style="text-align:center">35</h3>
+                                </div>
+                                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal5" style="font-size: 20px" onclick="gantiwarna()" value="Kosong" id="gantiText">
+                                    <?php echo $status5 ?> <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Modal5-->
+                        <div class="modal fade" id="myModal5" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Room 35</h4>
+                                    </div>
+                                    <div class="modal-body inputmodaltengah">
+                                        <input class="inputgaris " type="text" name="pengunjung" placeholder="Nama Pengunjung" />
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="submit" class="btn btn-primary" value="Ok" data-dismiss="modal" onclick="gantiText()" name="modal5_receptionist" />
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" name="modal5">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!--tutup row-->
+                    
+                    <div class="row">
+
+                        <!--no1-->
+                        <div class="col-md-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-light-blue" id="tesGantiWarna1">
+                                <div class="inner">
+                                    <h3 style="text-align:center">36</h3>
+                                </div>
+                                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal1" style="font-size: 20px">
+                                    <?php echo $_SESSION['status_room1']; ?> <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <!-- Modal 1 -->
+                        <form method="post" action="receptionist.php">
+                            <div class="modal fade" id="myModal1">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Room 36</h4>
+                                        </div>
+                                        <div class="modal-body inputmodaltengah">
+                                            <input class="inputgaris" type="text" name="customerName1_receptionist" placeholder="<?php echo $_SESSION['customerName1_receptionist'] ?>" />
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <input type="submit" class="btn btn-primary" value="Ok" name="modal1_receptionist" onClick="gantiWarna()" />
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!--no2-->
+                        <div class="col-md-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3 style="text-align:center">37</h3>
+                                </div>
+                                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal2" style="font-size: 20px">
+                                    <?php echo $_SESSION['status_room2'];?> <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Modal2 -->
+                        <form method="post" action="receptionist.php">
+                            <div class="modal fade" id="myModal2">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Room 37</h4>
+                                        </div>
+                                        <div class="modal-body inputmodaltengah">
+                                            <input class="inputgaris" type="text" name="customerName2_receptionist" placeholder="<?php echo $_SESSION['customerName2_receptionist']; ?>" />
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <input type="submit" class="btn btn-primary" value="Ok" name="modal2_receptionist" />
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!--no3-->
+                        <div class="col-md-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-light-blue">
+                                <div class="inner">
+                                    <h3 style="text-align:center">38</h3>
+                                </div>
+                                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal3" style="font-size: 20px">
+                        Kosong &nbsp; <i class="fa fa-arrow-circle-right"></i>
+                       
+
+                    </a>
+                            </div>
+                        </div>
+
+                        <!-- modal3 -->
+                        <form method="post" action="receptionist.php">
+                            <div class="modal fade" id="myModal3">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Room 38</h4>
+                                        </div>
+                                        <div class="modal-body inputmodaltengah">
+                                            <input class="inputgaris" type="text" name="customerName3_receptionist" placeholder="<?php echo $_SESSION['customerName2_receptionist']; ?>" />
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <input type="submit" class="btn btn-primary" value="Ok" name="modal3_receptionist" />
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!--no4-->
+                        <div class="col-md-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-light-blue">
+                                <div class="inner">
+                                    <h3 style="text-align:center">39</h3>
+                                </div>
+                                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal4" style="font-size: 20px">
+                         Kosong &nbsp; <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                            </div>
+                        </div>
+                        <!-- Modal 4 -->
+                        <form method="post" action="receptionist.php">
+                            <div class="modal fade" id="myModal4">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Room 39</h4>
+                                        </div>
+                                        <div class="modal-body inputmodaltengah">
+                                            <input class="inputgaris" type="text" name="customerName3_receptionist" placeholder="<?php echo $custName4 ?>" />
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <input type="submit" class="btn btn-primary" value="Ok" name="modal4_receptionist" />
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!--no5-->
+                        <div class="col-md-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-light-blue" id="testGantiWarna">
+                                <div class="inner">
+                                    <h3 style="text-align:center">40</h3>
+                                </div>
+                                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal5" style="font-size: 20px" onclick="gantiwarna()" value="Kosong" id="gantiText">
+                                    <?php echo $status5 ?> <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Modal5-->
+                        <div class="modal fade" id="myModal5" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Room 40</h4>
+                                    </div>
+                                    <div class="modal-body inputmodaltengah">
+                                        <input class="inputgaris " type="text" name="pengunjung" placeholder="Nama Pengunjung" />
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="submit" class="btn btn-primary" value="Ok" data-dismiss="modal" onclick="gantiText()" name="modal5_receptionist" />
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" name="modal5">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!--tutup row-->
+                    
+                    <div class="row">
+
+                        <!--no1-->
+                        <div class="col-md-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-light-blue" id="tesGantiWarna1">
+                                <div class="inner">
+                                    <h3 style="text-align:center">41</h3>
+                                </div>
+                                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal1" style="font-size: 20px">
+                                    <?php echo $_SESSION['status_room1']; ?> <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <!-- Modal 1 -->
+                        <form method="post" action="receptionist.php">
+                            <div class="modal fade" id="myModal1">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Room 41</h4>
+                                        </div>
+                                        <div class="modal-body inputmodaltengah">
+                                            <input class="inputgaris" type="text" name="customerName1_receptionist" placeholder="<?php echo $_SESSION['customerName1_receptionist'] ?>" />
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <input type="submit" class="btn btn-primary" value="Ok" name="modal1_receptionist" onClick="gantiWarna()" />
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!--no2-->
+                        <div class="col-md-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3 style="text-align:center">42</h3>
+                                </div>
+                                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal2" style="font-size: 20px">
+                                    <?php echo $_SESSION['status_room2'];?> <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Modal2 -->
+                        <form method="post" action="receptionist.php">
+                            <div class="modal fade" id="myModal2">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Room 42</h4>
+                                        </div>
+                                        <div class="modal-body inputmodaltengah">
+                                            <input class="inputgaris" type="text" name="customerName2_receptionist" placeholder="<?php echo $_SESSION['customerName2_receptionist']; ?>" />
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <input type="submit" class="btn btn-primary" value="Ok" name="modal2_receptionist" />
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!--no3-->
+                        <div class="col-md-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-light-blue">
+                                <div class="inner">
+                                    <h3 style="text-align:center">43</h3>
+                                </div>
+                                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal3" style="font-size: 20px">
+                        Kosong &nbsp; <i class="fa fa-arrow-circle-right"></i>
+                       
+
+                    </a>
+                            </div>
+                        </div>
+
+                        <!-- modal3 -->
+                        <form method="post" action="receptionist.php">
+                            <div class="modal fade" id="myModal3">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Room 43</h4>
+                                        </div>
+                                        <div class="modal-body inputmodaltengah">
+                                            <input class="inputgaris" type="text" name="customerName3_receptionist" placeholder="<?php echo $_SESSION['customerName2_receptionist']; ?>" />
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <input type="submit" class="btn btn-primary" value="Ok" name="modal3_receptionist" />
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!--no4-->
+                        <div class="col-md-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-light-blue">
+                                <div class="inner">
+                                    <h3 style="text-align:center">44</h3>
+                                </div>
+                                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal4" style="font-size: 20px">
+                         Kosong &nbsp; <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                            </div>
+                        </div>
+                        <!-- Modal 4 -->
+                        <form method="post" action="receptionist.php">
+                            <div class="modal fade" id="myModal4">
+                                <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Room 44</h4>
+                                        </div>
+                                        <div class="modal-body inputmodaltengah">
+                                            <input class="inputgaris" type="text" name="customerName3_receptionist" placeholder="<?php echo $custName4 ?>" />
+                                        </div>
+
+                                        <div class="modal-footer">
+
+                                            <input type="submit" class="btn btn-primary" value="Ok" name="modal4_receptionist" />
+
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!--no5-->
+                        <div class="col-md-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-light-blue" id="testGantiWarna">
+                                <div class="inner">
+                                    <h3 style="text-align:center">45</h3>
+                                </div>
+                                <a href="#" class="small-box-footer" data-toggle="modal" data-target="#myModal5" style="font-size: 20px" onclick="gantiwarna()" value="Kosong" id="gantiText">
+                                    <?php echo $status5 ?> <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Modal5-->
+                        <div class="modal fade" id="myModal5" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Room 45</h4>
+                                    </div>
+                                    <div class="modal-body inputmodaltengah">
+                                        <input class="inputgaris " type="text" name="pengunjung" placeholder="Nama Pengunjung" />
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="submit" class="btn btn-primary" value="Ok" data-dismiss="modal" onclick="gantiText()" name="modal5_receptionist" />
+                                        <button type="button" class="btn btn-default" data-dismiss="modal" name="modal5">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!--tutup row-->
+                    </section>
                 </div>
             </div>
            
@@ -1349,7 +1967,7 @@
 
 
 
-        </div>
+<!--        </div>-->
 
 
 
@@ -1365,10 +1983,13 @@
         <!-- AdminLTE App -->
         <script src="js/app.js" type="text/javascript"></script>
         <script src="js/custom.js" type="text/javascript"></script>
-
+        <script src="js/scrolling-nav.js" type="text/javascript"></script>
+        <script src="js/jquery.easing.min.js" type="text/javascript"></script>
+        <script src="js/jquery.js" type="text/javascript"></script>
+<!--
         <script>
             $(function () {
-                $('button.page-scroll').bind('click', function (event) {
+                $('a.page-scroll').bind('click', function (event) {
                     var $anchor = $(this);
                     $('html, body').stop().animate({
                         scrollTop: $($anchor.attr('href')).offset().top
@@ -1377,6 +1998,7 @@
                 });
             });
         </script>
+-->
     </body>
 
     </html>

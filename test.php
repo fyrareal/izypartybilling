@@ -18,6 +18,7 @@
 ?>
     <html>
         <head>
+<!--
                <script type="text/javascript">
         	jQuery(document).ready(function(){
 				$('#regionsearch').autocomplete({
@@ -26,6 +27,7 @@
 				});
 			});        
         </script>
+-->
         </head>
     <body>
         <link rel="stylesheet" href="css/jquery-ui-1.8.2.custom.css" />
@@ -75,7 +77,7 @@
                 var cell2 = row.insertCell(1);
 //                                cell2.innerHTML = "<input type='text' name='item[]'>";
                 cell2.innerHTML = "<form action='' method='post'><input style='width:100%;text-align:center;' name='item[]' id='regionsearch' type='text'/></form>";
-                cell2.innerHTML = "<form action='' method='post'><input style='width:100%;text-align:center;' name='item[]' id='regionsearch' type='text'/></form>";
+//                cell2.innerHTML = "<form action='' method='post'><input style='width:100%;text-align:center;' name='item[]' id='regionsearch' type='text'/></form>";
 
                 //                var cell3 = row.insertCell(2);
                 //                cell3.innerHTML = "<input type='text'  name='price[]' />";
@@ -112,6 +114,7 @@
         <!-- AdminLTE App -->
         <script src="js/app.js" type="text/javascript"></script>
         <script src="js/custom.js" type="text/javascript"></script>
+<!--
         <script type="text/javascript">
             jQuery(document).ready(function () {
                 $('#regionsearch').autocomplete({
@@ -120,6 +123,7 @@
                 });
             });
         </script>
+-->
     </body>
 
     </html>

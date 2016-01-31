@@ -31,8 +31,8 @@
 //        mysql_query("DELETE FROM order_dummy WHERE customer_name='Fadhol'");
 //    }
 //
-//    if(isset($_POST['modal22']))
-//    {
+    if(isset($_POST['modal24']))
+    {
 //        //$name = $_POST['myInputs'];
 //        //$_SESSION['order']=$name;
 //
@@ -58,11 +58,11 @@
 //        mysql_query("INSERT INTO ladies_service (ladies_id,customer_name) VALUES ('$ladiesID','$custName')");
 //        
 //       
-//        mysql_query("INSERT INTO order_dummy (item_id,order_dummy_quantity,customer_name) VALUES ('$itemID','$itemQTY','$custName')");
+        mysql_query("INSERT INTO order_dummy (item_id,order_dummy_quantity,customer_name) VALUES ('$itemID','$itemQTY','$custName')");
 ////        mysql_query("INSERT INTO order (customer_id,item_id,order_quantity) VALUES ('$cusID','$itemID','$itemQTY')");
 //        
 
-//    }
+    }
     
     
 
@@ -472,8 +472,31 @@
 
                                     <div class="row">
                                         <div class="col-md-6" style="margin-left:10px;">
+                                            <div class="input-group">
+                <span style="color:white;background-color:orange!important;padding:5px;" class="input-group-addon" id="sizing-addon2">
+                                        <strong>Ladies Name</strong>
+                </span>
+            <select name="ladies" style="padding:5px 0;">
+                                                <?php
+                                                
+                                                mysql_connect('localhost', 'root', '');
+                                                mysql_select_db('izyparty');
+                                                $result = mysql_query("SELECT * FROM ladies");
+
+                                                while($data = mysql_fetch_array($result)) {
+
+                                                    echo "<option class='' value='$data[ladies_id]'>$data[ladies_name]</option>";
+//                                                    echo "<a class="btn btn-danger" href="delete.php?id='.$row['id'].'">Delete</a>"; 
+                                                }
+                                                ?>
+                                            </select>
+              
+               
+            </div>
+                                            
+<!--
                                             <h4 for="sel1">Ladies :</h4>
-<!--                                            <button class="btn-disabled">Ladies :</button>-->
+                                            <button class="btn-disabled">Ladies :</button>
                                             
                                             <select name="ladies">
                                                 <?php
@@ -489,6 +512,7 @@
                                                 }
                                                 ?>
                                             </select>
+-->
                                         </div>
                                     </div>
 <!--
@@ -523,7 +547,7 @@
                             <iframe class="iframe1" id="frames" src="test.php" width="100%" height="300px" style="background:#ffffff"></iframe>
                             </div>
                             <div class="modal-footer">
-                                <input type="submit" class="btn btn-primary" value="Ok" name="modal22" />
+                                <input type="submit" class="btn btn-primary" value="Ok" name="modal24" />
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                             </div>
                         </div>

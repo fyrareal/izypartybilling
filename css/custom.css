@@ -1,9 +1,29 @@
 .logo{
-    width: 200px;
-    height:auto;
-    
+    height: 50px;
+    width: auto; 
+    margin-top: -5px;
 }
 
+.custom-navbar{
+    background-color: #EEEEEE;
+    height:75px;
+    border-style: none;
+    border-bottom: thick solid #F39C12;
+}
+
+.entro{
+    object-fit: cover;
+}
+
+
+.content{
+    float:right !important;
+    background-color: #eee;
+}
+
+.adminpanel{
+    background-color: white;
+}
 /*
 .modal-title{
     color:white;
@@ -17,13 +37,22 @@ input[type=checkbox]{
     width: 50px !important;
     height: 25px !important;
 }
+/*
 
 body {
 	background: #eee !important;	
 }
+*/
 
 .navigation button{
-    margin-left:50px;
+/*    margin-left:50px;*/
+    margin:20px 10% 10px 10%;  
+    padding:15px; 
+    width:80%;
+}
+
+.navigation span{ 
+    font-size: 2em;
 }
 .wrapper {	
 	margin-top: 80px;

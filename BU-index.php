@@ -1,13 +1,7 @@
+
 <?php
     include 'dbconnect.php';
     session_start();
-
-//	if(isset($_GET['action'])) {
-//		if($_GET['action']=="logout") {
-//			unset($_SESSION['admin']);
-//		}
-//	}
-	
   
     $username = null;
     $password = null;
@@ -39,13 +33,8 @@
                  header('Location: cashier.php');
                 $_SESSION['cashier']=$data['username'];
             }
-            else if ($auth==4) {
-                 header('Location: admin.php');
-                $_SESSION['admin']=$data['username'];
-            }
             else {
-                
-//                header('Location: index.php');
+                header('Location: index.php');
             }
 
         } else {
@@ -69,9 +58,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     </head>
 
-    <body>
+    <body style="padding:0;background:url('assets/bg.png');background-repeat:no-repeat">
+<!--        <body style="padding:0;">-->
 
-        <div class="container" id="tengah">
+       
+<!--            <div class="container">-->
+<!--
+                <div class="" style="width:50%;float:left;padding:0;">
+                    <img  class="entro" src="assets/Originals/sidegambar.jpg" style="height:inherit;padding:0;object-fit:fill;">
+                </div> 
+-->
+<!--                <div style="width:50%;float:right;" >-->
+                     <div class="container" id="tengah" style="background-color:white;">
 
             <div class="row">
                 <form method="post" class="col s4" id="tengah">
@@ -90,20 +88,21 @@
                         <input id="password" type="password" class="validate" name="password" required>
                         <label for="icon_telephone">Password</label>
                     </div>
-                      <?php if(isset ($_POST['login']) && (!isset($_SESSION['receptionist'])||!isset ($_SESSION['waitress'])||!isset ($_SESSION['cashier'])||!isset ($_SESSION['admin']))){?>
-                    <span><p style="color:red;">Incorrect Username or Password</p></span>
-                    <?php }else{?> <p style="display:none"></p> <?php }?>
 
                     <div class="row center-align">
-                        <input class="btn waves-effect waves-light" type="submit" value="Login" name="login">
+                        <input class="btn waves-effect waves-light" type="submit" value="Login">
                     </div>
-                  
 
                 </form>
 
 
+<!--            </div>-->
+<!--                </div>-->
+<!--                <div class="col-md-6">-->
+              
             </div>
-        </div>
+
+
 
 
         <!--Import jQuery before materialize.js-->
